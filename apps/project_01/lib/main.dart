@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_01/presentation/advicer/advicer_page.dart';
+import 'package:project_01/theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +11,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello Test!'),
-        ),
-      ),
+    return MaterialApp(
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
+      home: AdvicerPage(),
     );
   }
 }
