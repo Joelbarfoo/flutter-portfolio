@@ -1,0 +1,4 @@
+name: flutter_portfolio
+packages:
+  - apps/*
+  - packages/**

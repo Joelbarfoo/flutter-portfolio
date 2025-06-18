@@ -1,0 +1,14 @@
+name: flutter_portfolio
+description: Root workspace for my Flutter monorepo managed by Melos
+version: 0.0.1
+
+environment:
+  sdk: ^3.8.1
+
+dev_dependencies:
+  melos: ^6.3.3
+
+dependency_overrides:
+  # Optional, falls du lokale Pfade erzwingen willst - meist nicht nötig bei melos bootstrap
+  # Wird von Melos automatisch generiert
+
