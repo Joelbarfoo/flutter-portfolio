@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_01/application/bloc/advicer_bloc.dart';
 import 'package:project_01/presentation/advicer/widgets/advice_field.dart';
 import 'package:project_01/presentation/advicer/widgets/custom_button.dart';
+import 'package:project_01/presentation/advicer/widgets/error_message.dart';
 
 class AdvicerPage extends StatelessWidget {
   const AdvicerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final adivicerBloc = AdvicerBloc();
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -19,22 +23,40 @@ class AdvicerPage extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child:
-
-                  AdviceField(advice: 'guter rat ist teuer, das ist mir ungeheuer, ich bin ein alter räuber',),
-
-                /*Text(
-                  "Your advice is waiting for you!",
-                  style: themeData.textTheme.headlineMedium,textAlign: TextAlign.center,
+                child: BlocBuilder<AdvicerBloc, AdvicerState>(
+                  bloc: adivicerBloc,
+                  builder: (context, adviceState) {
+                    if (adviceState is AdvicerInitial) {
+                      return Text(
+                        "Your advice is waiting for you!",
+                        style: themeData.textTheme.headlineMedium,
+                        textAlign: TextAlign.center,
+                      );
+                    } else if (adviceState is AdvicerStateLoading) {
+                      return CircularProgressIndicator(
+                        color: themeData.colorScheme.secondary,
+                      );
+                    } else if (adviceState is AdvicerStateLoaded) {
+                      return AdviceField(advice: adviceState.advice);
+                    } else if (adviceState is AdvicerStateError) {
+                      return ErrorMessage();
+                    } else {
+                      return Placeholder();
+                    }
+                  },
                 ),
-
-                 */
               ),
             ),
 
             SizedBox(
               height: 200,
-              child: Center(child: CustomButton(onPressed: () {})),
+              child: Center(
+                child: CustomButton(
+                  onPressed: () {
+                    adivicerBloc.add(AdviceRequestedEvent());
+                  },
+                ),
+              ),
             ),
           ],
         ),

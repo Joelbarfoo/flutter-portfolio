@@ -8,7 +8,9 @@ environment:
 dev_dependencies:
   melos: ^6.3.3
 
-dependency_overrides:
+dependencies:
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
   # Optional, falls du lokale Pfade erzwingen willst - meist nicht nötig bei melos bootstrap
   # Wird von Melos automatisch generiert
 
