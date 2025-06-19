@@ -1,27 +1,21 @@
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
+import 'package:project_01/domain/entities/advice_entity.dart';
+import 'package:project_01/domain/usecases/advicer_usecases.dart';
 
 part 'advicer_event.dart';
 part 'advicer_state.dart';
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
   AdvicerBloc() : super(AdvicerInitial()) {
-    Future sleep1() {
-      return Future.delayed(Duration(seconds: 2), () => "1");
-    }
+    final usecases = AdvicerUsecases();
 
     on<AdviceRequestedEvent>((event, emit) async {
       emit(AdvicerStateLoading());
 
-      // do something; get advice
-      await sleep1();
+      AdviceEntity advice = await usecases.getAdviceUsecase();
 
-      emit(
-        AdvicerStateLoaded(
-          advice:
-              "guter rat ist teuer, das ist mir ungeheuer, ich bin ein alter räuber, haha",
-        ),
-      );
+      emit(AdvicerStateLoaded(advice: advice.advice));
     });
   }
 }
