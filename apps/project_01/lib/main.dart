@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_01/application/bloc/advicer_bloc.dart';
 import 'package:project_01/presentation/advicer/advicer_page.dart';
 import 'package:project_01/theme.dart';
 
@@ -15,7 +17,10 @@ class MainApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,
-      home: AdvicerPage(),
+      home: BlocProvider(
+        create: (context) => AdvicerBloc(),
+        child: AdvicerPage(),
+      ),
     );
   }
 }

@@ -1,4 +1,4 @@
 # flutter-portfolio
 
-## 1
-Flutter Tutorial Bloc
+## 1 Flutter Tutorial Bloc
+Video Tutorial from Udemy.
