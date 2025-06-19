@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ErrorMessage extends StatelessWidget {
-  const ErrorMessage({super.key});
+  final String message;
+  const ErrorMessage({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class ErrorMessage extends StatelessWidget {
     children: [
       Icon(Icons.error, size: 40, color: Colors.redAccent,),
       SizedBox(height: 20,),
-      Text("Ups.. something gone wrong. pls try again.",style: themeData.textTheme.headlineMedium,textAlign: TextAlign.center,),
+      Text(message ,style: themeData.textTheme.headlineMedium,textAlign: TextAlign.center,),
 
     ],
     );

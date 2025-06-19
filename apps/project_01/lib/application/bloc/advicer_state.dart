@@ -11,8 +11,10 @@ final class AdvicerStateLoaded extends AdvicerState {
   final String advice;
 
   AdvicerStateLoaded({required this.advice});
-
 }
 
-final class AdvicerStateError extends AdvicerState {}
+final class AdvicerStateError extends AdvicerState {
+  final String message;
 
+  AdvicerStateError({required this.message});
+}

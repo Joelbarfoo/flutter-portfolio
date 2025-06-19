@@ -1,17 +1,14 @@
-
-
-
+import 'package:dartz/dartz.dart';
 import 'package:project_01/domain/entities/advice_entity.dart';
+import 'package:project_01/domain/failures/failures.dart';
 
 class AdvicerUsecases {
-
-  Future<AdviceEntity> getAdviceUsecase() async {
-
+  Future<Either<Failure, AdviceEntity>> getAdviceUsecase() async {
     await Future.delayed(Duration(seconds: 2));
 
-  return AdviceEntity(advice: "test", id: 1);
+    // return Right(AdviceEntity(advice: "test", id: 1));
 
-    //businesslogic implementieren
+     return Left(ServerFailure());
+
   }
-
 }
