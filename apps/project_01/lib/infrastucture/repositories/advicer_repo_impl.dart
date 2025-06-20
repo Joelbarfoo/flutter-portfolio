@@ -6,8 +6,9 @@ import 'package:project_01/infrastucture/datasources/advicer_remote_datasource.d
 import 'package:project_01/infrastucture/exceptions/exceptions.dart';
 
 class AdvicerRepoImpl implements AdvicerRepository {
-  final AdvicerRemoteDatasource advicerRemoteDatasource =
-      AdvicerRemoteDatasourceImpl();
+  final AdvicerRemoteDatasource advicerRemoteDatasource;
+
+  AdvicerRepoImpl({required this.advicerRemoteDatasource});
 
   @override
   Future<Either<Failure, AdviceEntity>> getAdviceFromApi() async {

@@ -6,12 +6,12 @@ import 'package:project_01/domain/failures/failures.dart';
 import 'package:project_01/domain/usecases/advicer_usecases.dart';
 
 part 'advicer_event.dart';
+
 part 'advicer_state.dart';
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
-  AdvicerBloc() : super(AdvicerInitial()) {
-    final usecases = AdvicerUsecases();
-
+  final AdvicerUsecases usecases;
+  AdvicerBloc({required this.usecases}) : super(AdvicerInitial()) {
     on<AdviceRequestedEvent>((event, emit) async {
       emit(AdvicerStateLoading());
 
